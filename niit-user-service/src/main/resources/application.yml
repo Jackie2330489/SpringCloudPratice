@@ -15,5 +15,3 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8888/eureka/
-  instance:
-    metadata-map: MAIN
