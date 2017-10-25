@@ -3,7 +3,6 @@ server:
 spring:
   application:
     name: niit-eureka-server
-
 eureka:
   instance:
     hostname: localhost

@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: niit-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Jackie2330489/cruddemo
+          search-paths: yml
+          default-label: master
+server:
+  port: 8889
+
