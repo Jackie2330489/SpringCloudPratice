@@ -1,10 +1,10 @@
 spring:
   application:
-    name: niit-config-client
+    name: niit-user-service
   cloud:
     config:
       uri: http://localhost:8889/
       profile: default
       label: master
 server:
-  port: 9000
+  port: 8890
