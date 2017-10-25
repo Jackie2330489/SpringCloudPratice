@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.justin.niituserservice.dao.UserDao">
+    <resultMap id="BaseResultMap" type="com.justin.niituserservice.domain.User">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="pwd" property="pwd" jdbcType="VARCHAR" />
+        <result column="sex" property="sex" jdbcType="CHAR" />
+        <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="avatar" property="avatar" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="TINYINT" />
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+    <sql id="Insert_Column_List">
+        (`name`,`pwd`,`sex`,`mobile`,`email`,`avatar`,`status`,`create_time`,`update_time`)
+    </sql>
+    <sql id="Select_Base_Column_List" >
+        `id`,`name`,`sex`,`mobile`,`email`,`avatar`,`status`
+    </sql>
+    <sql id="Select_Extract_Column_List" >
+        ,`pwd`,`create_time`,`update_time`
+    </sql>
+    <insert id="insert" parameterType="com.justin.niituserservice.domain.User">
+        insert into `user`
+        <include refid="Insert_Column_List"/>
+        values(#{name},#{pwd},#{sex},#{mobile},#{email},#{avatar},#{status},now(),now())
+    </insert>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from `user` where `id`=#{id}
+    </delete>
+    <update id="updateByPrimaryKey" parameterType="com.justin.niituserservice.domain.User">
+        update `user`
+        set `name`=#{name},`pwd`=#{pwd},`sex`=#{sex},`mobile`=#{mobile},
+        `email`=#{email},`avatar`=#{avatar},`status`=#{status},`update_time`=now()
+        where `id`=#{id}
+    </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Select_Base_Column_List"/>
+        <include refid="Select_Extract_Column_List"/>
+        from `user` where id=#{id}
+    </select>
+    <select id="selectListAsVisitor" resultMap="BaseResultMap">
+        select
+        <include refid="Select_Base_Column_List"/>
+        from `user`
+    </select>
+    <select id="selectListAsUser" resultMap="BaseResultMap">
+        select
+        <include refid="Select_Base_Column_List"/>
+        <include refid="Select_Extract_Column_List"/>
+        from `user`
+    </select>
+</mapper>
