@@ -10,4 +10,4 @@ mybatis:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8888/eureka/
+      defaultZone: http://10.10.1.75:8888/eureka/
