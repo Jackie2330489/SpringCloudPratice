@@ -3,7 +3,7 @@ spring:
     name: niit-eureka-server
 eureka:
   instance:
-    hostname: localhost
+    hostname: 10.10.1.75
   client:
     register-with-eureka: false
     fetch-registry: false
